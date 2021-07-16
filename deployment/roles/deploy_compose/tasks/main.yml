@@ -1,0 +1,23 @@
+---
+- name:
+  template:
+    src: docker-compose.yaml
+    dest: "{{ project_path }}/docker-compose.yaml"
+    mode: '0744'
+
+- name:
+  copy:
+    src: docker-compose-start.sh
+    dest: "{{ project_path }}/docker-compose-start.sh"
+    mode: '0744'
+
+- name: Stop previous compose
+  shell: cmd="docker-compose down" chdir="{{ project_path }}"
+
+- name: Create and start services
+  shell: "sudo ./docker-compose-start.sh"
+  args:
+    executable: "/bin/bash"
+    chdir: "{{ project_path }}"
+
+

@@ -1,0 +1,15 @@
+---
+
+- name: Deploy web app
+  hosts: "web"
+  become: yes
+  gather_facts: True
+
+  vars:
+    - project_path: "/opt/{{ project_name }}"
+
+  roles:
+   - setup_docker_compose
+   - copy_image
+   - deploy_compose
+
