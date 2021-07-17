@@ -51,7 +51,8 @@ pipeline {
         
         stage("check Dir") {
             steps {
-                sh "./organize.sh ${env.IMAGE}"
+                sh "pwd"
+                sh "./organize.sh ${env.IMAGE}.tar"
             }
         }
         stage("deploy") {
