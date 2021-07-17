@@ -48,7 +48,12 @@ pipeline {
                 }
             }
         }
-
+        
+        stage("check Dir") {
+            steps {
+                sh "pwd"
+            }
+        }
         stage("deploy") {
             when {
                 branch "release*"
