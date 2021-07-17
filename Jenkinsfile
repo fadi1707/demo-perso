@@ -1,5 +1,6 @@
 pipeline {
 
+
     agent { label "master" }
 
     options {
@@ -42,7 +43,8 @@ pipeline {
                 script {
                     env["IMAGE"] = "${env.PROJ}:${env.BRANCH_NAME}.${env.BUILD_ID}"
                     def customImage = docker.build(env["IMAGE"])
-                    sh "docker save -o deployment/${env["IMAGE"]}.tar ${env["IMAGE"]}"
+                    sh "docker save -o ${env["IMAGE"]}.tar ${env["IMAGE"]}"
+                    //sh "cp ${env.IMAGE} ${env.WORKSPACE}@2/"
                 }
             }
         }
@@ -95,7 +97,7 @@ pipeline {
 Build: ${currentBuild.displayName}
 Result: ${currentBuild.currentResult}
 """
-                mail body: body, subject: status, to: 'katsok@personetics.com'
+                mail body: body, subject: status, to: 'fadi1707@outlook.com'
             }
         }
     }
