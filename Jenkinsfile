@@ -52,7 +52,7 @@ pipeline {
         stage("check Dir") {
             steps {
                 sh "pwd"
-                sh "./organize.sh ${env.IMAGE}"
+                sh "./organize.sh ${env.IMAGE}.tar"
             }
         }
         stage("deploy") {
