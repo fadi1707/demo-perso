@@ -53,7 +53,7 @@ pipeline {
             }
             agent {
                 dockerfile {
-                    filename 'ansible_Dockerfile'
+                    filename 'Dockerfile_ansible'
                     dir 'deployment'
                     args '-v /home/ec2-user/.ansible:/home/centos/.ansible'
                 }
