@@ -69,7 +69,7 @@ pipeline {
                             extras: "-e image=${env.IMAGE} " +
                                     "-e server_ip=${env.SERVER_IP} " +
                                     "-e project_name=${env.PROJ} " +
-                                    "-vv",
+                                    "-vvv",
                             credentialsId: 'test-key'
                     )
                 }
